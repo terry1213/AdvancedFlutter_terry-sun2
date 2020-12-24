@@ -148,7 +148,6 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
                   ),
                 ),
                 uploadimage == false
-
                     ? AspectRatio(
                     aspectRatio: 19 / 11,child: Image.network(
                   defaultimage,

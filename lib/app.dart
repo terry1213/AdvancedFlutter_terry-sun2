@@ -57,7 +57,6 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
     _connectivitySubscription.cancel();
   }
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
