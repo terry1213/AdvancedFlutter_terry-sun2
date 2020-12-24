@@ -31,6 +31,8 @@ dependencies:
   flutter_full_pdf_viewer: ^1.0.6
   image_picker: ^0.6.7+12
   url_launcher: 5.7.10
+  connectivity: ^2.0.2
+  rxdart: ^0.25.0
 
 dev_dependencies:
   flutter_test:
@@ -38,7 +40,8 @@ dev_dependencies:
   bloc_test: ^7.1.0
   mockito: ^4.0.0
   integration_test: ^1.0.0
-  rxdart: ^0.25.0
+  pedantic: ^1.0.0
+
 
 flutter:
   uses-material-design: true
