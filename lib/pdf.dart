@@ -33,18 +33,20 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
 
   final _updatePriceController = TextEditingController();
   final pdf = pw.Document();
-  String defaultimage = 'http://handong.edu/site/handong/res/img/logo.png';
+  String defaultimage = "http://handong.edu/site/handong/res/img/logo.png";
 
   File imageFile;
   bool uploadimage = false;
-  var image;
 
-  // ignore: always_declare_return_types
+
+
   writeOnPdf(String a){
 
-    // image = PdfImage.file(
-    //     pdf.document,
-    //     bytes: File(imageFile.path).readAsBytesSync());
+    final image = pw.MemoryImage(
+      File(imageFile.path).readAsBytesSync(),
+    );
+
+
     pdf.addPage(
         pw.MultiPage(
           pageFormat: PdfPageFormat.a5,
@@ -58,30 +60,30 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
               ),
 
               pw.Paragraph(
-                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed.'
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
               ),
 
               pw.Paragraph(
-                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed.'
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
               ),
 
-              //pw.Image.provider(image),
+              pw.Image.provider(image),
 
               pw.Header(
                   level: 1,
-                  child: pw.Text('Second Heading')
+                  child: pw.Text("Second Heading")
               ),
 
               pw.Paragraph(
-                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed.'
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
               ),
 
               pw.Paragraph(
-                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed.'
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
               ),
 
               pw.Paragraph(
-                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed.'
+                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
               ),
             ];
           },
@@ -92,21 +94,22 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
   }
 
   Future savePdf() async{
-    var documentDirectory = await getApplicationDocumentsDirectory();
+    Directory documentDirectory = await getApplicationDocumentsDirectory();
 
-    var documentPath = documentDirectory.path;
+    String documentPath = documentDirectory.path;
 
-    var file = File('$documentPath/example.pdf');
+    File file = File("$documentPath/example.pdf");
 
     file.writeAsBytesSync(pdf.save());
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
 
       appBar: AppBar(
-        title: Text('PDF Flutter'),
+        title: Text("Create PDF"),
       ),
 
       body: Container(
@@ -116,37 +119,42 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            TextField(
-              controller: _updatePriceController,
-              decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                labelText: 'Title',
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 40),
+              child : TextField(
+                controller: _updatePriceController,
+                decoration: InputDecoration(
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  labelText: 'Document Title',
 
+                ),
               ),
             ),
-            Text('PDF TUTORIAL', style: TextStyle(fontSize: 34),),
+
             Stack(
               alignment: Alignment.center,
               children: <Widget>[
                 SizedBox(
-                  width: 380,
+                  width: 350,
                   height: 230.00,
                   child: const DecoratedBox(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                     ),
                     // Put Your Child widget here.
                   ),
                 ),
                 uploadimage == false
-                    ? Image.network(
+                    ? AspectRatio(
+                    aspectRatio: 19 / 11,child: Image.network(
                   defaultimage,
                   //width: 230,
                   fit: BoxFit.fill,
-                )
-                    : Image.file(imageFile)
+                ))
+                    : AspectRatio(
+                  aspectRatio: 19 / 11,child:Image.file(imageFile))
               ],
             ),
             Container(
@@ -170,13 +178,13 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
           writeOnPdf(_updatePriceController.text);
           await savePdf();
 
-          var documentDirectory = await getApplicationDocumentsDirectory();
+          Directory documentDirectory = await getApplicationDocumentsDirectory();
 
-          var documentPath = documentDirectory.path;
+          String documentPath = documentDirectory.path;
 
-          var fullPath = '$documentPath/example.pdf';
+          String fullPath = "$documentPath/example.pdf";
 
-          await Navigator.push(context, MaterialPageRoute(
+          Navigator.push(context, MaterialPageRoute(
               builder: (context) => PdfPreviewScreen(path: fullPath,)
           ));
 
