@@ -42,8 +42,9 @@ class CounterView extends StatelessWidget {
               return FloatingActionButton(
                 child: const Icon(Icons.calculate),
                 onPressed: () {
-                  if (state > 0 )
+                  if (state > 0 ) {
                     factorial(state);
+                  }
                 },
               );
             },
