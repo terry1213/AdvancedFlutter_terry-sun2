@@ -63,11 +63,9 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
                   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
               ),
 
-              pw.Paragraph(
-                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
-              ),
 
               pw.Image.provider(image),
+              pw.SizedBox(height: 30),
 
               pw.Header(
                   level: 1,
@@ -213,7 +211,7 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
   @override
   void dispose() {
     _updatePriceController.dispose();
-    // super.dispose();
+     super.dispose();
   }
 
 
