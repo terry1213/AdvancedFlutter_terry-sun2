@@ -33,7 +33,8 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
 
   final _updatePriceController = TextEditingController();
   final pdf = pw.Document();
-  String defaultimage = "http://handong.edu/site/handong/res/img/logo.png";
+
+  String defaultimage = 'http://handong.edu/site/handong/res/img/logo.png';
 
   File imageFile;
   bool uploadimage = false;
@@ -60,30 +61,30 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
               ),
 
               pw.Paragraph(
-                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
+                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed.'
               ),
 
               pw.Paragraph(
-                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
+                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed.'
               ),
 
               pw.Image.provider(image),
 
               pw.Header(
                   level: 1,
-                  child: pw.Text("Second Heading")
+                  child: pw.Text('Second Heading')
               ),
 
               pw.Paragraph(
-                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
+                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed.'
               ),
 
               pw.Paragraph(
-                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
+                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed.'
               ),
 
               pw.Paragraph(
-                  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
+                  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed.'
               ),
             ];
           },
@@ -98,7 +99,7 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
 
     String documentPath = documentDirectory.path;
 
-    File file = File("$documentPath/example.pdf");
+    File file = File('$documentPath/example.pdf');
 
     file.writeAsBytesSync(pdf.save());
   }
@@ -109,7 +110,7 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
     return Scaffold(
 
       appBar: AppBar(
-        title: Text("Create PDF"),
+        title: Text('Create PDF'),
       ),
 
       body: Container(
@@ -132,15 +133,15 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
                 ),
               ),
             ),
-
             Stack(
               alignment: Alignment.center,
               children: <Widget>[
                 SizedBox(
+
                   width: 350,
                   height: 230.00,
                   child: const DecoratedBox(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.white,
                     ),
                     // Put Your Child widget here.
@@ -182,7 +183,7 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
 
           String documentPath = documentDirectory.path;
 
-          String fullPath = "$documentPath/example.pdf";
+          String fullPath = '$documentPath/example.pdf';
 
           Navigator.push(context, MaterialPageRoute(
               builder: (context) => PdfPreviewScreen(path: fullPath,)

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:counter_bloc/pdf.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity/connectivity.dart';
@@ -58,7 +57,6 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
     _connectivitySubscription.cancel();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
