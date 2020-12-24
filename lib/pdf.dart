@@ -37,13 +37,16 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
 
   File imageFile;
   bool uploadimage = false;
-  var image;
+
+
 
   writeOnPdf(String a){
 
-    // image = PdfImage.file(
-    //     pdf.document,
-    //     bytes: File(imageFile.path).readAsBytesSync());
+    final image = pw.MemoryImage(
+      File(imageFile.path).readAsBytesSync(),
+    );
+
+
     pdf.addPage(
         pw.MultiPage(
           pageFormat: PdfPageFormat.a5,
@@ -64,7 +67,7 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
                   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada fames ac turpis egestas sed tempus urna. Quisque sagittis purus sit amet. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Ipsum dolor sit amet consectetur adipiscing elit pellentesque. Viverra justo nec ultrices dui sapien eget mi proin sed."
               ),
 
-              //pw.Image.provider(image),
+              pw.Image.provider(image),
 
               pw.Header(
                   level: 1,
@@ -102,10 +105,11 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
 
       appBar: AppBar(
-        title: Text("PDF Flutter"),
+        title: Text("Create PDF"),
       ),
 
       body: Container(
@@ -115,22 +119,25 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            TextField(
-              controller: _updatePriceController,
-              decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                labelText: 'Title',
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 40),
+              child : TextField(
+                controller: _updatePriceController,
+                decoration: InputDecoration(
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  labelText: 'Document Title',
 
+                ),
               ),
             ),
-            Text("PDF TUTORIAL", style: TextStyle(fontSize: 34),),
+
             Stack(
               alignment: Alignment.center,
               children: <Widget>[
                 SizedBox(
-                  width: 380,
+                  width: 350,
                   height: 230.00,
                   child: const DecoratedBox(
                     decoration: const BoxDecoration(
@@ -140,12 +147,14 @@ class _CreatePDFPageState extends State<CreatePDFPage> {
                   ),
                 ),
                 uploadimage == false
-                    ? Image.network(
+                    ? AspectRatio(
+                    aspectRatio: 19 / 11,child: Image.network(
                   defaultimage,
                   //width: 230,
                   fit: BoxFit.fill,
-                )
-                    : Image.file(imageFile)
+                ))
+                    : AspectRatio(
+                  aspectRatio: 19 / 11,child:Image.file(imageFile))
               ],
             ),
             Container(
